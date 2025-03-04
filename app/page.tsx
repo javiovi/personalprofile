@@ -45,7 +45,7 @@ export default function Home() {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Code className="h-6 w-6 text-[#00FF94]" />
-            <span className="text-lg font-bold">Javi Oviedo</span>
+            <span className="text-lg font-bold">JoBuilds</span>
           </div>
           <nav className="hidden md:flex gap-6">
             <Link href="#about" className="text-sm font-medium hover:text-[#00FF94] transition-colors">
@@ -478,10 +478,10 @@ export default function Home() {
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
           <div className="flex items-center gap-2">
             <Code className="h-5 w-5 text-[#00FF94]" />
-            <span className="text-sm font-medium">Javier Oviedo</span>
+            <span className="text-sm font-medium">JoBuilds</span>
           </div>
           <p className="text-sm text-[#9CA3AF]">
-            © {new Date().getFullYear()} Javier Oviedo. {t("footer.rights")}
+            © {new Date().getFullYear()} JoBuilds. {t("footer.rights")}
           </p>
           <div className="flex gap-4">
             <Button
