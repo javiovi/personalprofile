@@ -25,7 +25,7 @@ export const translations = {
     "hero.badge": "Full Stack Developer",
     "hero.title": "Creating digital solutions with more than just ",
     "hero.subtitle": "I build scalable, user-centric web applications that solve real-world problems.",
-    "hero.cta.hire": "Hire Me",
+    "hero.cta.hire": "Contact Me",
     "hero.cta.work": "View My Work",
     "hero.code.word": "Code", 
 
@@ -114,7 +114,7 @@ export const translations = {
     "hero.title": "Creando Soluciones Digitales con algo mas que ",
     "hero.subtitle":
       "Construyo aplicaciones web escalables y centradas en el usuario, que resuelven problemas del mundo real.",
-    "hero.cta.hire": "Contrátame",
+    "hero.cta.hire": "Contáctame",
     "hero.cta.work": "Ver Mi Trabajo",
     "hero.code.word": "Código",
 
