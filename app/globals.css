@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 24% 5%;
+    --foreground: 0 0% 89%;
+    --card: 240 17% 12%;
+    --card-foreground: 0 0% 89%;
+    --popover: 240 24% 5%;
+    --popover-foreground: 0 0% 89%;
+    --primary: 156 100% 50%;
+    --primary-foreground: 240 24% 5%;
+    --secondary: 240 17% 12%;
+    --secondary-foreground: 0 0% 89%;
+    --muted: 240 17% 12%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 240 17% 12%;
+    --accent-foreground: 0 0% 89%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 89%;
+    --border: 240 17% 12%;
+    --input: 240 17% 12%;
+    --ring: 156 100% 50%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.group:hover svg {
+  color: #00FF94;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px #00FF94);
+}
+
+.group svg {
+  width: 3rem !important;
+  height: 3rem !important;
+  transition: all 0.3s ease;
+}
+
+.typewriter-wrapper {
+  font-family: 'Fira Code', monospace;
+  white-space: pre;
+  font-size: 12px;
+  line-height: 1.6;
+  min-height: 350px; 
+  color: #00FF94; 
+  padding-top: 8px;
+
+}
+
+.typewriter-cursor {
+  color: #00FF94;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Estilos para la barra superior de la terminal */
+.typewriter-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: #2D2D2D;
+}
+
+.typewriter-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  width: 12px;
+  height: 12px;
+  background-color: #FF5F56; 
+  border-radius: 50%;
+  box-shadow: 
+    24px 0 0 #FFBD2E, 
+    48px 0 0 #27C93F; 
+  transition: opacity 0.2s;
+}
+
+/* Efecto hover para los círculos */
+.typewriter-wrapper:hover::after {
+  opacity: 0.8;
+}
+@media (max-width: 768px) {
+  .typewriter-wrapper {
+    font-size: 10px;
+    line-height: 1.4;
+    min-height: 250px; 
+    white-space: pre-wrap; 
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .typewriter-wrapper {
+    font-size: 9px;
+    min-height: 200px;
+  }
+}
