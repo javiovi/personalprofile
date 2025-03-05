@@ -34,7 +34,7 @@ export const translations = {
     "about.p1":
     "I’m a passionate developer with a proven ability to transform complex challenges into elegant, efficient solutions.",
     "about.p2":
-    "With deep expertise in both front-end and back-end technologies, I specialize in creating seamless, user-centered digital experiences. I combine technical acumen with a creative approach to problem-solving, consistently writing clean and maintainable code that not only works flawlessly but also fosters collaboration",
+    "With deep expertise in both front-end and back-end technologies, I specialize in creating seamless, user-centered digital experiences. I combine technical acumen with a creative approach to problem-solving, consistently writing clean and maintainable code that not only works flawlessly but also fosters collaboration.",
     "about.p3":
     "When I’m not coding, you’ll find me exploring emerging technologies, contributing to open-source projects, and sharing insights through technical articles and community engagement.",
     // Skills Section

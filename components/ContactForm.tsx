@@ -19,6 +19,12 @@ export default function ContactForm() {
     e.preventDefault()
     setLoading(true)
     
+    console.log('EmailJS Config:', {
+      serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+      templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+      publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    })
+    
     try {
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -34,8 +40,12 @@ export default function ContactForm() {
 
       setStatus('success')
       setFormData({ name: '', email: '', message: '' })
-    } catch (error) {
-      console.error('Error:', error)
+    } catch (error: any) {
+      console.error('Error detallado:', {
+        message: error?.message,
+        name: error?.name,
+        stack: error?.stack
+      })
       setStatus('error')
     } finally {
       setLoading(false)
