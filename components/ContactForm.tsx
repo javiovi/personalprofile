@@ -14,6 +14,22 @@ export default function ContactForm() {
   })
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [configError, setConfigError] = useState(false)
+
+  useEffect(() => {
+    const hasAllConfig = 
+      !!process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID &&
+      !!process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID &&
+      !!process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
+    setConfigError(!hasAllConfig)
+
+    console.log('Variables de entorno disponibles:', {
+      tieneServiceId: !!process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+      tieneTemplateId: !!process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+      tienePublicKey: !!process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    })
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -87,64 +103,71 @@ export default function ContactForm() {
   return (
     <Card className="bg-[#1E1E1E] border-[#2D2D2D]">
       <CardContent className="p-6 md:p-8 space-y-6">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <label htmlFor="name" className="text-sm font-medium text-[#E2E2E2]">
-                {t("contact.name")}
-              </label>
-              <input
-                id="name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                required
-                className="flex h-10 w-full rounded-md border border-[#2D2D2D] bg-[#0B0B0F] px-3 py-2 text-sm text-[#E2E2E2] ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#9CA3AF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF94] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder={t("contact.placeholder.name")}
-              />
+        {configError ? (
+          <div className="text-red-500 text-center p-4">
+            Lo sentimos, el formulario de contacto no está disponible en este momento. 
+            Por favor, envíame un email directamente a javio.dev@gmail.com
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-sm font-medium text-[#E2E2E2]">
+                  {t("contact.name")}
+                </label>
+                <input
+                  id="name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  className="flex h-10 w-full rounded-md border border-[#2D2D2D] bg-[#0B0B0F] px-3 py-2 text-sm text-[#E2E2E2] ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#9CA3AF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF94] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder={t("contact.placeholder.name")}
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium text-[#E2E2E2]">
+                  {t("contact.email")}
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  className="flex h-10 w-full rounded-md border border-[#2D2D2D] bg-[#0B0B0F] px-3 py-2 text-sm text-[#E2E2E2] ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#9CA3AF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF94] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder={t("contact.placeholder.email")}
+                />
+              </div>
             </div>
             <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium text-[#E2E2E2]">
-                {t("contact.email")}
+              <label htmlFor="message" className="text-sm font-medium text-[#E2E2E2]">
+                {t("contact.message")}
               </label>
-              <input
-                id="email"
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              <textarea
+                id="message"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 required
-                className="flex h-10 w-full rounded-md border border-[#2D2D2D] bg-[#0B0B0F] px-3 py-2 text-sm text-[#E2E2E2] ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#9CA3AF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF94] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder={t("contact.placeholder.email")}
+                className="flex min-h-[120px] w-full rounded-md border border-[#2D2D2D] bg-[#0B0B0F] px-3 py-2 text-sm text-[#E2E2E2] ring-offset-background placeholder:text-[#9CA3AF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF94] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                placeholder={t("contact.placeholder.message")}
               />
             </div>
-          </div>
-          <div className="space-y-2">
-            <label htmlFor="message" className="text-sm font-medium text-[#E2E2E2]">
-              {t("contact.message")}
-            </label>
-            <textarea
-              id="message"
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              required
-              className="flex min-h-[120px] w-full rounded-md border border-[#2D2D2D] bg-[#0B0B0F] px-3 py-2 text-sm text-[#E2E2E2] ring-offset-background placeholder:text-[#9CA3AF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF94] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              placeholder={t("contact.placeholder.message")}
-            />
-          </div>
-          <Button 
-            type="submit"
-            disabled={loading}
-            className="w-full bg-[#00FF94] text-[#0B0B0F] hover:bg-[#00FF94]/90"
-          >
-            {loading ? 'Sending...' : t("contact.send")}
-          </Button>
+            <Button 
+              type="submit"
+              disabled={loading}
+              className="w-full bg-[#00FF94] text-[#0B0B0F] hover:bg-[#00FF94]/90"
+            >
+              {loading ? 'Sending...' : t("contact.send")}
+            </Button>
 
-          {status === 'success' && (
-            <p className="text-green-500 text-center">Message sent successfully!</p>
-          )}
-          {status === 'error' && (
-            <p className="text-red-500 text-center">Error sending message. Please try again.</p>
-          )}
-        </form>
+            {status === 'success' && (
+              <p className="text-green-500 text-center">Message sent successfully!</p>
+            )}
+            {status === 'error' && (
+              <p className="text-red-500 text-center">Error sending message. Please try again.</p>
+            )}
+          </form>
+        )}
       </CardContent>
     </Card>
   )
