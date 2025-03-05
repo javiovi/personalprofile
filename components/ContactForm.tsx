@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
 import { Button } from "./ui/button"
 import { Card, CardContent } from "./ui/card"
@@ -18,33 +18,65 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
+    setStatus('idle')
     
-    console.log('EmailJS Config:', {
-      serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-      templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-      publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    
+    console.log('Verificando configuración:', {
+      tieneServiceId: !!serviceId,
+      tieneTemplateId: !!templateId,
+      tienePublicKey: !!publicKey
     })
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('Error: Faltan variables de entorno de EmailJS')
+      setStatus('error')
+      setLoading(false)
+      return
+    }
     
     try {
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: 'javio.dev@gmail.com',
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'javio.dev@gmail.com',
+      }
+
+      console.log('Intentando enviar email con parámetros:', {
+        serviceId,
+        templateId,
+        tieneParams: !!templateParams
+      })
+
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
       )
 
-      setStatus('success')
-      setFormData({ name: '', email: '', message: '' })
+      console.log('Respuesta de EmailJS:', result)
+      
+      if (result.status === 200) {
+        setStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        throw new Error(`Error en el envío: Estado ${result.status}`)
+      }
     } catch (error: any) {
+      console.error('Error completo:', error)
       console.error('Error detallado:', {
-        message: error?.message,
-        name: error?.name,
-        stack: error?.stack
+        mensaje: error?.message || 'Error desconocido',
+        nombre: error?.name || 'Sin nombre de error',
+        stack: error?.stack || 'Sin stack trace',
+        config: {
+          serviceId: serviceId,
+          templateId: templateId,
+          hasPublicKey: !!publicKey
+        }
       })
       setStatus('error')
     } finally {
