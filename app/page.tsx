@@ -260,7 +260,7 @@ export default function Home() {
             </div>
             <div className="relative h-[400px] w-80 rounded-lg  overflow-hidden border border-[#00FF94]">
             <Image
-  src="/javi-profile.jpg"
+  src="/dragon.png"
   alt="Developer working"
   fill
   className="object-cover"
