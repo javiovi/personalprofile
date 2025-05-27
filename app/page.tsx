@@ -363,37 +363,50 @@ export default function Home() {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
+              
+                {
+                  title: t("portfolio.web3citizen"),
+                  description: t("portfolio.web3citizen.desc"),
+                  tags: ["Next.js", "React", "TypeScript", "Node.js", "Tailwind CSS", ],
+                  image: "iso-welcome.svg",
+                  githubUrl: "https://github.com/javiovi/web3citizen",
+                  webUrl: "https://www.web3citizen.xyz/"
+                },
+                {
+                  title: t("portfolio.rubrica"),
+                  description: t("portfolio.rubrica.desc"),
+                  tags: ["Next.js", "React", "Supabase", "Vercel Blob"],
+                  image: "/rubrica-iso.png",
+                  githubUrl: "https://github.com/javiovi/generador-de-firmas-digitales",
+                  webUrl: "https://www.rubrica.ar/"
+                },
+                {
+                  title: t("portfolio.blog"),
+                  description: t("portfolio.blog.desc"),
+                  tags: ["Next.js", "TypeScript", "Neon", "Vercel-Blob", "Tailwind CSS"],
+                  image: "image-white.png",
+                  githubUrl: "https://github.com/javiovi/writeitnow",
+                  webUrl: ""
+                },
+             
                 {
                   title: t("portfolio.ecommerce"),
                   description: t("portfolio.ecommerce.desc"),
                   tags: ["Next.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
                   image: "restaurant-icon.png",
-                  githubUrl: "https://github.com/javiovi/restaurant-app"
-                 
-                },
-                {
-                  title: t("portfolio.web3citizen"),
-                  description: t("portfolio.web3citizen.desc"),
-                  tags: ["Next.js", "React", "TypeScript", "Node.js"],
-                  image: "iso-welcome.svg",
-                    githubUrl: "https://github.com/javiovi/web3citizen"
-                },
-                {
-                  title: t("portfolio.blog"),
-                  description: t("portfolio.blog.desc"),
-                  tags: ["Next.js", "GraphQL", "PostgreSQL"],
-                  image: "image-white.png",
-                    githubUrl: "https://github.com/javiovi/writeitnow"
+                  githubUrl: "https://github.com/javiovi/restaurant-app",
+                  webUrl: "https://restaurant-app-jo.vercel.app/restaurant"
                 },
               ].map((project, index) => (
                 <Card key={index} className="overflow-hidden bg-[#1E1E1E] border-[#2D2D2D] hover:scale-105 transition-transform duration-300">
-                  <div className="relative h-48 w-full">
+                                  <div className="relative h-48 w-full">
+
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
                       className="object-contain bg-[#1E1E1E] p-2 rounded-lg transition-transform "
-    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
                   <CardContent className="p-6 space-y-4">
@@ -406,20 +419,40 @@ export default function Home() {
                         </Badge>
                       ))}
                     </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-full border-[#00FF94] text-[#00FF94] hover:bg-[#00FF94] hover:text-[#0B0B0F]"
-                      asChild
-                    >
-                          <Link 
-        href={project.githubUrl} 
-        target="_blank" 
-        rel="noopener noreferrer"
-      >
-                        {t("portfolio.viewProject")} <ExternalLink className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
+                    <div className="flex flex-row gap-2 mt-4">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-1/2 border-[#00FF94] text-[#00FF94] hover:bg-[#00FF94] hover:text-[#0B0B0F] flex items-center justify-center"
+                        asChild
+                        disabled={!project.webUrl}
+                      >
+                        <Link 
+                          href={project.webUrl || '#'} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          tabIndex={!project.webUrl ? -1 : undefined}
+                        >
+                          {t("portfolio.viewProject")} <ExternalLink className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-1/2 border-[#00FF94] text-[#00FF94] hover:bg-[#00FF94] hover:text-[#0B0B0F] flex items-center justify-center"
+                        asChild
+                        disabled={!project.githubUrl}
+                      >
+                        <Link 
+                          href={project.githubUrl || '#'} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          tabIndex={!project.githubUrl ? -1 : undefined}
+                        >
+                          View in GitHub <Github className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               ))}

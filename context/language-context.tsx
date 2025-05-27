@@ -32,11 +32,11 @@ export const translations = {
     // About Section
     "about.title": "About Me",
     "about.p1":
-    "I’m a passionate developer with a proven ability to transform complex challenges into elegant, efficient solutions.",
+    "I'm a passionate developer with a proven ability to transform complex challenges into elegant, efficient solutions.",
     "about.p2":
     "With deep expertise in both front-end and back-end technologies, I specialize in creating seamless, user-centered digital experiences. I combine technical acumen with a creative approach to problem-solving, consistently writing clean and maintainable code that not only works flawlessly but also fosters collaboration.",
     "about.p3":
-    "When I’m not coding, you’ll find me exploring emerging technologies, contributing to open-source projects, and sharing insights through technical articles and community engagement.",
+    "When I'm not coding, you'll find me exploring emerging technologies, contributing to open-source projects, and sharing insights through technical articles and community engagement.",
     // Skills Section
     "skills.title": "Technical Arsenal",
     "skills.subtitle": "Here's the tech stack I wield to build powerful, scalable applications.",
@@ -74,6 +74,8 @@ export const translations = {
     "portfolio.web3citizen.desc": "A collaborative space where enthusiasts, professionals, and contributors can share their knowledge and insights about the Ethereum ecosystem and the broader world of Web3.The aim is to build a comprehensive resource to help others navigate decentralised projects and opportunities.",
     "portfolio.blog": "Write It Now!",
     "portfolio.blog.desc":  "Write It Now! is more than just a blogging platform; it's a comprehensive tool that encourages creativity, facilitates content creation, and fosters community engagement. It's designed for writers who want to focus on their content while enjoying a powerful, user-friendly platform that takes care of the technical details.",
+    "portfolio.rubrica": "Rubrica",
+    "portfolio.rubrica.desc": "Create and manage your professional signature in seconds. The Email Signature Generator is a full-featured web application that allows users to create, customize, save, and export professional email signatures. The app is built with Next.js, React, Tailwind CSS, and uses Supabase for authentication and data storage, and Vercel Blob for image storage.",
 
     // Contact Section
     "contact.title": "Let's Build Something Amazing",
@@ -167,6 +169,8 @@ export const translations = {
     "portfolio.blog": "Write It Now",
     "portfolio.blog.desc":
     "Write It Now! es algo más que una plataforma de blogs; es una herramienta integral que fomenta la creatividad, facilita la creación de contenidos y favorece la participación de la comunidad. Está diseñada para escritores que quieren centrarse en sus contenidos mientras disfrutan de una plataforma potente y fácil de usar que se ocupa de los detalles técnicos.",
+    "portfolio.rubrica": "Rubrica",
+    "portfolio.rubrica.desc": "Crea y gestiona tu firma profesional en segundos. El Generador de Firmas de Email es una aplicación web completa que permite a los usuarios crear, personalizar, guardar y exportar firmas de email profesionales. La aplicación está construida con Next.js, React, Tailwind CSS y utiliza Supabase para la autenticación y almacenamiento de datos, y Vercel Blob para el almacenamiento de imágenes.",
     // Contact Section
     "contact.title": "Construyamos Algo Increíble",
     "contact.subtitle": "¿Tienes un proyecto en mente? Colaboremos y convirtamos tu visión en realidad.",
