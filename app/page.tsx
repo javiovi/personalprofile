@@ -363,7 +363,14 @@ export default function Home() {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-              
+                {
+                  title: t("portfolio.chest"),
+                  description: t("portfolio.chest.desc"),
+                  tags: ["React", "React Native", "Swift", "Python/Django", "AWS"],
+                  image: "/chest-logo.svg",
+                  githubUrl: "",
+                  webUrl: "https://chestmusic.com/"
+                },
                 {
                   title: t("portfolio.web3citizen"),
                   description: t("portfolio.web3citizen.desc"),
@@ -405,7 +412,7 @@ export default function Home() {
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-contain bg-[#1E1E1E] p-2 rounded-lg transition-transform "
+                      className="object-contain bg-[#1E1E1E] px-8 py-2 rounded-lg transition-transform "
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>

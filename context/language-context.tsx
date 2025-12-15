@@ -76,6 +76,8 @@ export const translations = {
     "portfolio.blog.desc":  "Write It Now! is more than just a blogging platform; it's a comprehensive tool that encourages creativity, facilitates content creation, and fosters community engagement. It's designed for writers who want to focus on their content while enjoying a powerful, user-friendly platform that takes care of the technical details.",
     "portfolio.rubrica": "Rubrica",
     "portfolio.rubrica.desc": "Create and manage your professional signature in seconds. The Email Signature Generator is a full-featured web application that allows users to create, customize, save, and export professional email signatures. The app is built with Next.js, React, Tailwind CSS, and uses Supabase for authentication and data storage, and Vercel Blob for image storage.",
+    "portfolio.chest": "Chest",
+    "portfolio.chest.desc": "Chest is the platform where you store, organize, and share all your musical demos securely. Say goodbye to losing tracks on WhatsApp, Drive, or external drives.",
 
     // Contact Section
     "contact.title": "Let's Build Something Amazing",
@@ -171,6 +173,8 @@ export const translations = {
     "Write It Now! es algo más que una plataforma de blogs; es una herramienta integral que fomenta la creatividad, facilita la creación de contenidos y favorece la participación de la comunidad. Está diseñada para escritores que quieren centrarse en sus contenidos mientras disfrutan de una plataforma potente y fácil de usar que se ocupa de los detalles técnicos.",
     "portfolio.rubrica": "Rubrica",
     "portfolio.rubrica.desc": "Crea y gestiona tu firma profesional en segundos. El Generador de Firmas de Email es una aplicación web completa que permite a los usuarios crear, personalizar, guardar y exportar firmas de email profesionales. La aplicación está construida con Next.js, React, Tailwind CSS y utiliza Supabase para la autenticación y almacenamiento de datos, y Vercel Blob para el almacenamiento de imágenes.",
+    "portfolio.chest": "Chest",
+    "portfolio.chest.desc": "Chest es la plataforma donde guardás, organizás y compartís todas tus maquetas de forma segura. Chau a perder temas en WhatsApp, Drive o discos externos.",
     // Contact Section
     "contact.title": "Construyamos Algo Increíble",
     "contact.subtitle": "¿Tienes un proyecto en mente? Colaboremos y convirtamos tu visión en realidad.",
